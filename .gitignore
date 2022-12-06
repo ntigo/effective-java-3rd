@@ -50,6 +50,7 @@ cmake-build-*/
 out/
 build/
 target/
+bin/
 .gradle/
 /gradle
 
