@@ -12,5 +12,9 @@ public class ServiceLoaderTest {
         ServiceLoader<IHelloWorld> loader = ServiceLoader.load(IHelloWorld.class);
         Optional<IHelloWorld> first = loader.findFirst();
         first.ifPresent( h -> h.display() );
+
+//        for ( IHelloWorld iHelloWorld : loader ) {
+//            iHelloWorld.display();
+//        }
     }
 }
