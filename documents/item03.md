@@ -71,6 +71,12 @@ public class Singleton {
 ### doubleCheckedLocking 방식의 싱글턴
 멀티쓰레드에서 안전하게 사용할 수 있으며 synchronized를 필요한 상황에만 사용할수 있도록 더블 체크를 하는 방식이다.
 
+* volatile 변수를 사용하고 있지 않는 MultiThread 어플리케이션에서는 Task를 수행하는 동안 성능 향상을 위해 Main Memory에서 읽은 변수 값을 CPU Cache에 저장하게 됩니다
+
+![img.png](img.png)
+  
+
+
 ```java
 public class Singleton {
 
