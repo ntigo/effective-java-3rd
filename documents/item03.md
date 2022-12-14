@@ -1,7 +1,28 @@
 # 아이템 3. private 생성자나 열거 타입으로 싱글턴임을 보증하라
 
-싱글턴이란 인스턴스를 오직 하나만 생성할 수 있는 클래스
+싱글턴이란 인스턴스를 오직 하나만 생성할 수 있는 클래스를 말한다
 
+싱글턴의 예로는 무상태 객체나 설계상 유일해야 하는 시스템 컴포넌트를 들수 있다. 
+
+싱글턴으로 만들면 이를 사용하는 클라이언트를 테스트하기가 어려워질 수 있다.
+
+  
+### 싱글턴을 만들면 이를 사용하는 클라이언트를 테스트하기가 어려운 이유
+싱글턴 인스턴스를 가짜(mock) 구현으로 대체할수 없기 때문이다.
+
+```java
+// 테스트 코드 예시
+class StudyServiceTest {
+	@Test
+	void createStudyService() {
+		MemberService memberService = mock( MemberService.class );
+		StudyRepository studyRepository = Mockito.mock( StudyRepository.class );
+		StudyService studyService = new StudyService( memberService, studyRepository );
+		assertNotNull( studyService );
+	}
+}
+
+``` 
 
 ### 기본적인 방식의 싱글턴
 getInstance 함수에서 인스턴스를 체크하여 생성하지 않았을 경우에만 인스턴스를 생성한다
@@ -27,7 +48,7 @@ public class Singleton {
 
 ### synchronized 방식의 싱글턴
 synchronized를 사용하여 멀티쓰레드에서 안전하게 사용할수 있다. 
-하지만 getInstance 호출마다 락을 걸고 푸는 과정이 있음으로 불필요한 자원이 소비되는 단점이 있다.
+하지만 getInstance 함수를 호출마다 락을 걸고 푸는 과정이 있음으로 불필요한 자원이 소비되는 단점이 있다.
 
 
 ```java 
@@ -49,6 +70,12 @@ public class Singleton {
 
 ### doubleCheckedLocking 방식의 싱글턴
 멀티쓰레드에서 안전하게 사용할 수 있으며 synchronized를 필요한 상황에만 사용할수 있도록 더블 체크를 하는 방식이다.
+
+* volatile 변수를 사용하고 있지 않는 MultiThread 어플리케이션에서는 Task를 수행하는 동안 성능 향상을 위해 Main Memory에서 읽은 변수 값을 CPU Cache에 저장하게 됩니다
+
+<img src="https://nesoy.github.io/assets/posts/20180609/1.png"/> 
+  
+
 
 ```java
 public class Singleton {
@@ -80,7 +107,11 @@ public static final 필드인 Elvis.INSTANCE를 초기화 할때 딱한번 실�
 
 역직렬화를 막을려면 readResolve 메소드를 제공하여야한다
 
+### 장점
+* 해당 클래스가 싱글턴임이 명백히 드러난다. (필드가 final로 선언되어 있어서)
+* 간결한 코드
 
+### 예시
 ```java 
 public class Elvis {
     public static final Elvis INSTANCE = new Elvis();
@@ -91,10 +122,8 @@ public class Elvis {
         System.out.println("leaveTheBuilding");
     }
 
-
-    public static void main(String[] args) {
-        Elvis elvis = Elvis.INSTANCE;
-        elvis.leaveTheBuilding();
+    protected Object readResolve(){
+        return INSTANCE;
     }
 }
 
@@ -108,9 +137,41 @@ getInstance는 항상 같은 객체의 참조를 반환한다
 역직렬화를 막을려면 readResolve 메소드를 제공하여야한다 
 
 ### 장점
-* API를 바꾸지 않고도 싱글턴이 아니게 변경할수 있는 점
-* 정적 팩터리를 제네릭 싱턴 팩터리로 만들수 있다는 점 
-* 정적 팩터린의 메서드 참조를 공급자로 사용할수 있다는 점
+* API를 바꾸지 않고도 싱글턴이 아니게 변경할수 있는 점 ( 예시로 getInstance 함수를 API 별로 다른 인스턴스를 넘겨줄수도 있다)
+* 정적 팩터리를 제네릭 싱글턴 팩터리로 만들수 있다는 점
+
+```java
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class GenericFactoryMethod {
+	public static final Set EMPTY_SET = new HashSet();
+
+	public static final < T > Set< T > emptySet() {
+		return ( Set<T> ) EMPTY_SET;
+	}
+}
+
+```  
+
+* 정적 팩터리의 메서드 참조를 공급자로 사용할수 있다는 점 Supplier는 자바8의 함수형 인터페이스인데 내부 메소드는 get()으로 지정한 Generic Type을 반환하고 있다. 마침 getInstance()도 지정한 하나의 인스턴스를 반환해 줄수 있기 때문에 Supplier의 구현체 처럼 사용할수 있다 
+```java
+public class UseSupplier {
+
+    private final Supplier<? extends StaticSingleton> singleton;
+
+    public UseSupplier(Supplier<? extends StaticSingleton> singleton) {
+        this.singleton = singleton;
+    }
+}
+
+// 매개변수로 전달
+UseSupplier useSupplier = new UseSupplier(StaticSingleton::getInstance);
+
+```
+
+### 예시
 
 ```java 
 public class Elvis {
@@ -122,9 +183,8 @@ public class Elvis {
         System.out.println("leaveTheBuilding");
     }
 
-    public static void main(String[] args) {
-        Elvis elvis = Elvis.getInstance();
-        elvis.leaveTheBuilding();
+      protected Object readResolve(){
+        return INSTANCE;
     }
 }
 
@@ -133,6 +193,9 @@ public class Elvis {
 ### staticInnerClass 방식의 싱글턴
 역직렬화와 리플레션 공격 상황에 안전하다.
 멀티 쓰레드 환경에 안전하게 사용할수 있다.
+
+
+## 예시
 
 ```java
 public class Singleton {
@@ -178,23 +241,34 @@ import java.lang.reflect.InvocationTargetException;
 
 
 Constructor<Singleton> constructor = null;
-        try {
-            constructor = Singleton.class.getDeclaredConstructor();
-        } catch (NoSuchMethodException e) {
-            throw new RuntimeException(e);
-        }
+        constructor = Singleton.class.getDeclaredConstructor();
         constructor.setAccessible(true);
 
         Singleton singleton2 = null;
-        try {
-            singleton2 = constructor.newInstance();
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        } catch (InvocationTargetException e) {
-            throw new RuntimeException(e);
-        }
+        singleton2 = constructor.newInstance();
 ```
 
 
+### 직렬화 역직렬화 공격
+
+```java
+public class App {
+
+    public static void main() throws IOException, ClassNotFoundException {
+        Singleton singleton = Singleton.getInstance();
+        Singleton singleton2 = null;
+
+        try(ObjectOutput out = new ObjectOutputStream(new FileOutputStream("singleton.obj"))){
+            out.writeObject(singleton);
+        }
+
+        try (ObjectInput in = new ObjectInputStream(new FileInputStream("singleton.obj"))){
+            singleton2 = (Singleton) in.readObject();
+        }
+
+        System.out.printf("deserialization 결과: %s", singleton == singleton2);
+
+    }
+}
+
+```
