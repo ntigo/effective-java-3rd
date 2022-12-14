@@ -73,7 +73,7 @@ public class Singleton {
 
 * volatile 변수를 사용하고 있지 않는 MultiThread 어플리케이션에서는 Task를 수행하는 동안 성능 향상을 위해 Main Memory에서 읽은 변수 값을 CPU Cache에 저장하게 됩니다
 
-![img.png](img.png)
+<img src="https://nesoy.github.io/assets/posts/20180609/1.png"/> 
   
 
 
