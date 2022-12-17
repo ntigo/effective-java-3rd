@@ -1,15 +1,15 @@
 package com.coopnc.effectivejava3rd.item03.briefing;
 
-public class MockSigleton implements ISingle {
-    private static final Singleton INSTANCE = new Singleton();
+public class MockSingleton implements ISingle {
+    private static final MockSingleton INSTANCE = new MockSingleton();
 
-    private Singleton() {
+    private MockSingleton() {
     }
 
-    public static Singleton getInstance() {
+    public static MockSingleton getInstance() {
         return INSTANCE;
     }
-    
+
     @Override
     public boolean send( String message ) {
         System.out.println( "mock : " + message );

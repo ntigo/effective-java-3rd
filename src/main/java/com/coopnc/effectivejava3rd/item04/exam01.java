@@ -1,4 +1,4 @@
-package com.coopnc.effectivejava3rd.item04.exam01;
+package com.coopnc.effectivejava3rd.item04;
 
 public class exam01 {
     class DateUtility{

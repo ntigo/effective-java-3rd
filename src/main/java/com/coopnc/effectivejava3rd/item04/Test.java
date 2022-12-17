@@ -1,4 +1,4 @@
-package com.coopnc.effectivejava3rd.item04.exam02;
+package com.coopnc.effectivejava3rd.item04;
 
 
 public class Test {

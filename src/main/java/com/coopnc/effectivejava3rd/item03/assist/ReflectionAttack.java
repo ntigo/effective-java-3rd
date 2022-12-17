@@ -1,4 +1,4 @@
-package com.ntigo.study.effectivejava3rd.item03.assist;
+package com.coopnc.effectivejava3rd.item03.assist;
 
 import lombok.SneakyThrows;
 
@@ -21,9 +21,9 @@ public class ReflectionAttack {
 
         System.out.println( "reflection unsafety: " + instance + " : " + newInstance );
 
-        ReflectionSafeSingleton rsInstance = ReflectionSafeSingleton.getInstance();
+        /*ReflectionSafeSingleton rsInstance = ReflectionSafeSingleton.getInstance();
         ReflectionSafeSingleton rsNewInstance = getNewInstance( ReflectionSafeSingleton.class );
 
-        System.out.println( "reflection safety: " + rsInstance + " : " + rsNewInstance );
+        System.out.println( "reflection safety: " + rsInstance + " : " + rsNewInstance );*/
     }
 }

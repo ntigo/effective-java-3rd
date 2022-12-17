@@ -1,7 +1,11 @@
-package com.ntigo.study.effectivejava3rd.item03.assist;
+package com.coopnc.effectivejava3rd.item03.assist;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class ImperfectSingletonTest {
 
@@ -10,15 +14,37 @@ public class ImperfectSingletonTest {
         ImperfectSingleton.instance = null;
 
         // 생성자를 명시적으로 지정하지 않으면 직접 생성 가능!!
-        ImperfectSingleton imperfectSingleton = new ImperfectSingleton();
+//        ImperfectSingleton imperfectSingleton = new ImperfectSingleton();
 
         // Thread safe 하지 않음. (상위 주석 후 수차례 반복 시 확인 가능)
         Runnable runnable = () -> {
-            ImperfectSingleton singleton = new ImperfectSingleton();
-            System.out.println( singleton );
+            /*try {
+                TimeUnit.NANOSECONDS.sleep( 1 );
+            } catch ( InterruptedException e ) {
+                throw new RuntimeException( e );
+            }*/
+
+            ImperfectSingleton singleton = ImperfectSingleton.getInstance();
+            System.out.println( Thread.currentThread().getName() + " : " + singleton );
         };
 
-        List<Thread> threads = new ArrayList<>();
+        /*List<Thread> threads = new ArrayList<>();
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
+        threads.add( new Thread( runnable ) );
         threads.add( new Thread( runnable ) );
         threads.add( new Thread( runnable ) );
         threads.add( new Thread( runnable ) );
@@ -26,9 +52,25 @@ public class ImperfectSingletonTest {
         threads.add( new Thread( runnable ) );
         threads.add( new Thread( runnable ) );
 
-        for ( int i = 0; i < threads.size(); i++ ) {
-            Thread thread = threads.get( i );
-            thread.start();
-        }
+        int size = threads.size();
+        for ( int i = 0; i < size; i++ ) {
+            threads.get( i ).start();
+        }*/
+
+        ExecutorService executorService = Executors.newFixedThreadPool( Runtime.getRuntime().availableProcessors() * 2 );
+        CompletableFuture.allOf( CompletableFuture.runAsync( runnable, executorService ),
+                CompletableFuture.runAsync( runnable, executorService ),
+                CompletableFuture.runAsync( runnable, executorService ),
+                CompletableFuture.runAsync( runnable, executorService ),
+                CompletableFuture.runAsync( runnable, executorService ),
+                CompletableFuture.runAsync( runnable, executorService ),
+                CompletableFuture.runAsync( runnable, executorService ),
+                CompletableFuture.runAsync( runnable, executorService ),
+                CompletableFuture.runAsync( runnable, executorService ),
+                CompletableFuture.runAsync( runnable, executorService ),
+                CompletableFuture.runAsync( runnable, executorService ),
+                CompletableFuture.runAsync( runnable, executorService ),
+                CompletableFuture.runAsync( runnable, executorService ));
+        executorService.shutdown();
     }
 }

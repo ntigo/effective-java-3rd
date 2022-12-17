@@ -1,4 +1,4 @@
-package com.ntigo.study.effectivejava3rd.item03.assist;
+package com.coopnc.effectivejava3rd.item03.assist;
 
 public class MockSingleton implements ISingleton {
     private static final MockSingleton INSTANCE = new MockSingleton();
