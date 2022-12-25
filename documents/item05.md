@@ -72,12 +72,11 @@ Singleton 구현도 다른 객체를 대체하기가 쉽지 않은 구조로 되
 
 ```java
 
-public class SpellChecker_V4 {
+public class SpellChecker_V3 {
+    private final Lexicon dicionary;
 
-    private final Lexicon dictionary;
-
-    public SpellChecker_V4(Supplier<Lexicon> dictionary) {
-        this.dictionary = Objects.requireNonNull(dictionary.get());
+    public SpellChecker_V3(Lexicon dicionary) {
+        this.dicionary = Objects.requireNonNull(dicionary);
     }
 
     public static boolean isValid(String word) {
@@ -96,6 +95,7 @@ public class SpellChecker_V4 {
         System.out.println("isChecked_V3 = " + isChecked_V3);
     }
 }
+
 
 
 
