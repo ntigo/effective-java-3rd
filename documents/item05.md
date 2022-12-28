@@ -1,147 +1,156 @@
 # 아이템 5.자원을 직접 명시하지 말고 의존 객체 주입을 사용하라
 
 ## 유연하지 못한 정적 유틸리티 클래스
-많은 클래스들은 하나 이상의 자원에 의존한다. `이번 핀 발급 미션을 진행 하며 핀을 발급하기 위해서는 핀 번호를 생성하기 위한 클래스에 의존`하도록 구현해야 한다고 판단했다.
+많은 클래스들은 하나 이상의 자원에 의존한다. `이번 미션을 진행 하며 사전을 이용해서 맞춤법 검사기를 만든다고 했을 때 맞춤법 검사기는 사전에 의존`하도록 구현해야 한다고 판단했다.
 <br>
 
-아래는 핀 발급을 자동으로 생성하기 위한 `정적 유틸리티 클래스` 이다.
+아래는 맞춤법 검사기 `SpellChecker`는 사전`Dictionary`에 의존하고 있는 `정적 유틸리티 클래스` 이다.
 
 ```java 
 
-public class AutoRandomPinGenerator {
+public class SpellChecker {
+    // Dictionary 객체가 고정 -> 변경이 어렵움
+    private static final Lexicon dictionary = new KoreaDictionary();
 
-	private AutoRandomPinGenerator() {
-	}
+    private SpellChecker() {
+        // 객체 생성 방지
+    }
 
-	public static List< String > pinGenerator( String preFix, int size ) {
-		List< String > pinList = new ArrayList<>();
-		StringBuilder pinNo = new StringBuilder();
+    public static boolean isValid(String word) { return true; }
 
-		for ( int i = 0; i < size; i++ ) {
-			Random random = new Random();
-			StringBuilder sb = new StringBuilder();
-			pinNo = new StringBuilder();
+    public static List<String> suggestions(String typo) {
+        return new ArrayList<>();
+    }
 
-			for ( int j = 0; j < 12; j++ ) {
-				int value = random.nextInt( 10 );
-				sb.append( value );
-			}
-
-			pinNo.append( preFix );
-			pinNo.append( sb.toString() );
-
-			pinList.add( pinNo.toString() );
-		}
-
-		return pinList;
-	}
+    // 실행
+    public static void main( String[] args ) {
+        // 정적 유틸리티 클래스 구현
+        boolean isChecked = SpellChecker.isValid("hello");
+        System.out.println("isChecked = " + isChecked);
+    }
 }
 
 ```
+정적 유틸리티 클래스로 구현 시 `KoreaDictionary` 객체로 고정되어 있기 때문에 다른 객체 (`EnglishDictionary`) 와 같은 객체로 변경하기 쉽지 않다.<br>
+자연스럽게 코드는 유연하지 않을 뿐 아니라 테스트시에도 객체 변경이 자유롭지 못해 테스트 하기 어려운 문제도 가지고 있다.
 
-Pin 클래스는 12자리의 핀 번호 리스트를 가진 일급 컬렉션이다. Pin 번호를 생성하는 시점에 위에서 작성한 유틸리티 클래스를 활용하여 랜덤으로 번호를 생성한 뒤 활용한다.
+## SingleTon 구현
+ITEM3에서 언급한 Singleton 으로 구현한다면 괜찬을까? 한번 살펴보자 
 
 ```java
 
-public class Pin {
-  private final Set< String > pinNumbers;
+public class SpellChecker_V2 {
 
-  public Pin( String prefix, int size) {
-    List< String > lists = AutoRandomPinGenerator.pinGenerator( prefix, size );
-    this.pinNumbers = lists.stream().map( String::new ).collect( toSet() );
+    //Singleton Instance 생성
+    public static final SpellChecker_V2 INSTANCE = new SpellChecker_V2();
+    private SpellChecker_V2() {
+        //객체 생성 방지
+    }
 
-  }
+    public static boolean isValid(String word) {
+        return true;
+    }
 
-  public Set< String > getLottoNumbers() {
-    return Collections.unmodifiableSet(pinNumbers);
-  }
+    public static List<String> suggestions(String typo) {
+        return new ArrayList<>();
+    }
 
+    // 실행
+    public static void main( String[] args ) {
+        // Singleton 구현
+        boolean isChecked_V2 = SpellChecker_V2.INSTANCE.isValid("hello");
+        System.out.println("isChecked_V2 = " + isChecked_V2);
+    }
 }
 
 ```
 
-하지만 위와 같은 방법은 자동 생성을 위한 `AutoRandomPinGenerator`에만 의존하고 있다. 만약 요구사항이 추가되어 `핀번호를 수동으로`을 추가해야 한다면 `Pin 클래스를 직접 수정`하여 반영해야 한다. 이것이 의미하는 것은 비즈니스 로직의 핵심 도메인을 수정 해야만 반영이 가능하다는 의미이다.
-<br>
-이렇게 <b>사용하는 자원에 따라 동작이 달라 지는 클래스에는 정적 유틸리티 클래스나 싱글턴 방식은 적합하지 않다.</b>
-<br>
-
-Pin 클래스는 다양한 `Pin 생성 전략`을 가질 수 있어야 한다. 이것을 이뤄내기 위해서는 `인스턴스를 생성할 때 생성자에 필요한 자원을 넘겨주는 방식`을 활용해야 한다.
+Singleton 구현도 다른 객체를 대체하기가 쉽지 않은 구조로 되어있다. 책에서 표시하길 `사용하는 자원에 따라 동작이 달라지는 클래스에는 정적 유틸리티 클래스나 싱글톤 방식이 적합하지 않다`고 언급하고 있다.
 
 ## 의존 객체 주입
-이제 위 예제를 생성자를 통해 의존 객체를 주입하는 방식으로 변경하였다. 우선 번호 생성 전략을 구현하기 위한 `RandomPinGenerator` 인터페이스이다.
+제시하는 해결책으로는 인스턴스 생성 시 생성자에 필요한 자원을 넘겨주는 의존 객체 주입방식을 소개하고 있다. 아래 코드를 살펴보자.
 
 ```java
 
-public interface RandomPinGenerator {
-	List< String > pinGenerator( String preFix, int size );
+public class SpellChecker_V3 {
+    private final Lexicon dicionary;
+
+    public SpellChecker_V3(Lexicon dicionary) {
+        this.dicionary = Objects.requireNonNull(dicionary);
+    }
+
+    public static boolean isValid(String word) {
+        return true;
+    }
+
+    public static List<String> suggestions(String typo) {
+        return new ArrayList<>();
+    }
+
+    // 실행
+    public static void main( String[] args ) {
+        // 의존성 구현
+        SpellChecker_V3 spellChecker_V3 = new SpellChecker_V3(new EnglishDictionary());
+        boolean isChecked_V3 = spellChecker_V3.isValid("hello");
+        System.out.println("isChecked_V3 = " + isChecked_V3);
+    }
 }
+
+
 
 
 ```
 
-추상 메서드를 오직 1개만 가진 인터페이스이기 때문에 `함수형 인터페이스`로 활용이 가능하다. 이제 해당 인터페이스를 구현하여 자동 생성 기능을 작성한다.
+자원을 사용하는 `Main Method`에서 생성하여 클래스에 넘겨주는 방식 `생성자로 주입`이다 여기서의 의존 관계는 객체의 사용관계라 생각하면 된다.<br>
+이런 구조라면 `SpellChecker`클래스를 수정하지 않고 여러 `Dictionary`객체를 변경할 수 있게 된다.
 
+## 변형 패턴인 팩토리 메서드 패턴
+생성자에 자원 팩토리를 넘겨주는 방식이다. 팩토리란 호출할 때마다 특정 타입의 인스턴스를 반복해서 만들어주는 객체를 말한다.<br>
+팩토리라는 이름에서 알 수 있듯이 객체를 생산하는 공장이라 생각하면 이해가 쉽다.<br>
+자바8에서 이러한 팩토리 메서드를 표현한 <b>`Supplier<T>`</b> 인터페이스가 있다.
 
 ```java
 
-public class DIAutoRandomPinGenerator implements RandomPinGenerator {
+public class SpellChecker_V4 {
 
-	public List< String > generator( String preFix, int size ) {
-		List< String > pinList = new ArrayList<>();
-		StringBuilder pinNo = new StringBuilder();
+    private final Lexicon dictionary;
 
-		for ( int i = 0; i < size; i++ ) {
-			Random random = new Random();
-			StringBuilder sb = new StringBuilder();
-			pinNo = new StringBuilder();
+    public SpellChecker_V4(Supplier<Lexicon> dictionary) {
+        this.dictionary = Objects.requireNonNull(dictionary.get());
+    }
 
-			for ( int j = 0; j < 12; j++ ) {
-				int value = random.nextInt( 10 );
-				sb.append( value );
-			}
+    public static boolean isValid(String word) {
+        return true;
+    }
 
-			pinNo.append( preFix );
-			pinNo.append( sb.toString() );
+    public static List<String> suggestions(String typo) {
+        return new ArrayList<>();
+    }
 
-			pinList.add( pinNo.toString() );
-		}
-
-		return pinList;
-	}
-
-	@Override
-	public List< String > pinGenerator( String preFix, int size ) {
-		List< String > lists = generator( preFix, size );
-		return lists.stream().limit(size).collect(toList());
-	}
+    // 실행
+    public static void main( String[] args ) {
+        // Factory Method 패턴
+        Supplier<Lexicon> dictionary = new Supplier<Lexicon>() {
+            @Override
+            public Lexicon get() {
+                return new KoreaDictionary();
+            }
+        };
+        SpellChecker_V4 spellChecker_V4 = new SpellChecker_V4(dictionary);
+        boolean isChecked_V4 = spellChecker_V4.isValid("hello");
+        System.out.println("isChecked_V4 = " + isChecked_V4);
+    }
 }
 
 ```
 
-이전과 대부분의 구현은 유사하지만 더 이상 정적으로 `generate` 메서드를 사용하지 않는다. 이제 `DIPIn` 클래스는 생성 시점에 해당 전략을 주입받도록 수정한다.
-
-```java
-
-public class DIPin {
-	private static final String DEFAUTL_PREFIX = "8443";
-	private static final int DEFAUTL_ISSUE_SIZE = 10;
-
-	private final Set< String > pinNumbers;
-
-	public DIPin( RandomPinGenerator randomPinGenerator ) {
-		List< String > lists = randomPinGenerator.pinGenerator( DEFAUTL_PREFIX, DEFAUTL_ISSUE_SIZE );
-		this.pinNumbers = lists.stream().map( String::new ).collect( toSet() );
-	}
-
-	public Set< String > getPinNumbers() {
-		return Collections.unmodifiableSet( pinNumbers );
-	}
-}
-
-```
+`Supplier<Lexicon>` 은 메서드 레퍼런스(`람다`) 형태로 표현 가능하다. 대형 프로젝트에서는 스프링(`Spring`), 대거(`Dagger`)와 같은 의존 객체 주입 프레임워크를 활용해 보는 것도 좋은 대안이 될 수 있다.
 
 ## 그래서 무슨 장점이 있는가?
-의존 객체 주입 패턴은 해당 객체에게 `유연성을 부여`해주고 `테스트 용이성을 개선` 해준다. 유틸리티 클래스에 의존성을 가진 기존 코드를 테스트 하기 위해서는 랜덤으로 생성되는 핀번호를 활용해야 한다. 이것은 확실한 테스트를 진행하는 방법이 아니다.
+의존 객체 주입 패턴은 해당 객체에게 `유연성을 부여`해주고 `테스트 용이성을 개선` 해준다.
+
+## 의존 객체 주입의 단점은?
+의존 객체 주입이 유연성과 테스트 용이성을 개선해주지만, 의존성이 수 천 개나 되는 큰 프로젝트에서는 코드를 어지럽게 만들 수 있다.
 
 
 ## 의존성 주입(Dependency Injection)
