@@ -1,4 +1,4 @@
-package com.coopnc.effectivejava3rd.item03.briefing;
+package com.coopnc.effectivejava3rd.item03.exam;
 
 public class TestSingle implements ISingle {
     private static TestSingle INSTANCE = new TestSingle();

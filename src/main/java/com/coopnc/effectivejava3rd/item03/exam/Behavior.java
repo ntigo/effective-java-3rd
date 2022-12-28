@@ -1,6 +1,6 @@
-package com.coopnc.effectivejava3rd.item03.briefing;
+package com.coopnc.effectivejava3rd.item03.exam;
 
-import com.coopnc.effectivejava3rd.item03.Basic;
+import com.coopnc.effectivejava3rd.item03.exam.Basic;
 
 import java.util.function.Supplier;
 

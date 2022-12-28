@@ -62,3 +62,5 @@ IT 전략본부에서 진행되는 '이펙티브 자바 3판' 발표 정보입�
 [아이템 2. 생성자에 매개변수가 많다면 빌더를 고려하라](documents/item02.md)  
 [아이템 3. private 생성자나 열거 타입으로 싱글턴임을 보증하라](documents/item03.md)  
 [아이템 3. private 생성자나 열거 타입으로 싱글턴임을 보증하라 - v. Assist](documents/item03-assist.md)  
+[아이템 7. 다 쓴 객체 참조를 해제하라](documents/item07.md)  
+[아이템 8. finalizer와 cleaner 사용을 피하라](documents/item08.md)
