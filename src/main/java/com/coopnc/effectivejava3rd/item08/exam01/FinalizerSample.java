@@ -28,7 +28,7 @@ class FinalizerTest {
 
         finalizer = null;
 
-        System.gc();
+        System.gc(); //
 
         System.out.println("end");
 

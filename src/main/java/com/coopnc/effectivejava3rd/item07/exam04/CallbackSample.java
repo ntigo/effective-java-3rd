@@ -8,7 +8,7 @@ public class CallbackSample {
 
         callback = null;
 
-        System.gc();
+        System.gc(); //
 
         for(int i=0; i<5; i++){ //메시지 발송을 5번까지 보낸다
             callee.onInputMessage("i = " + i);

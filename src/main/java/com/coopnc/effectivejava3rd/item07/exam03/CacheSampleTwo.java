@@ -7,7 +7,8 @@ public class CacheSampleTwo {
         WeakHashMap<Integer, String> map = new WeakHashMap<>();
 
         Integer key1 = 1000;
-        Integer key2 = 2000;
+        Integer key2 = 200;
+        String  a = "a";
 
         map.put(key1, "key1의 객체입니다.");
         map.put(key2, "key2의 객체입니다.");

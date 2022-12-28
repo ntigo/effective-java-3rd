@@ -22,8 +22,8 @@ public class CleanerSample implements AutoCloseable {
         @Override
         public void run() {
             System.out.println("before call cleaner - idx: " + idx + ", thread: " + Thread.currentThread().getName());
-            String a = null;
-            a.toString();
+//            String a = null;
+//            a.toString();
             System.out.println("after call cleaner - idx: " + idx + ", thread: " + Thread.currentThread().getName());
             countDownLatch.countDown();
         }
@@ -43,7 +43,7 @@ public class CleanerSample implements AutoCloseable {
 
 class CleanerTest {
     public static void main(String[] args) throws Exception {
-        final int MAX_OBJ_CNT = 100;
+        final int MAX_OBJ_CNT = 5;
 
         CountDownLatch countDownLatch = new CountDownLatch(MAX_OBJ_CNT);
 

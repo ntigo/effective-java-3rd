@@ -22,7 +22,9 @@ class Stack {
             throw new EmptyStackException();
         }
 
-        return elements[--size];
+        Object result = elements[--size];
+        elements[size] = null; // null 처리
+        return result;
     }
 
     public void ensureCapacity() {
