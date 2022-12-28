@@ -1,4 +1,4 @@
-package com.coopnc.effectivejava3rd.item03;
+package com.coopnc.effectivejava3rd.item03.exam;
 
 public enum EnumType {
 	INSTANCE;
