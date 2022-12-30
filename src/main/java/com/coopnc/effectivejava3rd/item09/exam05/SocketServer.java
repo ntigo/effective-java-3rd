@@ -35,7 +35,6 @@ public class SocketServer {
 		try {
 			socket.setSoLinger( true, 0 );
 			System.out.println( socket.getLocalAddress().toString() + " / " + socket.getLocalPort() + " server socket close" );
-			socket.shutdownOutput();
 			socket.close();
 		} catch( Exception e ) {
 			System.out.println( e.toString() );
