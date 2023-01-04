@@ -8,6 +8,7 @@ public class ConsistencyTest {
         URL url1 = new URL("http://google.com");
         URL url2 = new URL("http://google.com");
 
+        // 일관성 깨질 위험
         System.out.println(url1.equals(url2) );
 //        Thread.sleep(5000);
         System.out.println(url2.equals(url1) );

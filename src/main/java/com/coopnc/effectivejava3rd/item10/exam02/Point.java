@@ -1,5 +1,8 @@
 package com.coopnc.effectivejava3rd.item10.exam02;
 
+import java.awt.*;
+import java.util.Set;
+
 public class Point {
     private final int x;
     private final int y;

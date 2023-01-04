@@ -1,5 +1,7 @@
 package com.coopnc.effectivejava3rd.item10.exam04;
 
+import java.util.Objects;
+
 public final class PhoneNumber {
     private  final short areaCode, prefix, lineNum;
 
@@ -16,7 +18,22 @@ public final class PhoneNumber {
         return (short) val;
     }
 
-    @Override
+    // IDE 자동생성 equals, hashCode
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        PhoneNumber that = (PhoneNumber) o;
+//        return areaCode == that.areaCode && prefix == that.prefix && lineNum == that.lineNum;
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(areaCode, prefix, lineNum);
+//    }
+
+    // 올바른 equals 재정의 예시
+        @Override
     public boolean equals(Object obj) {
         // == 연산자로 자기 자신 참조 확인
         if (obj == this){

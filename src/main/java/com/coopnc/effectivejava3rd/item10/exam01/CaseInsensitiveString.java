@@ -1,5 +1,7 @@
 package com.coopnc.effectivejava3rd.item10.exam01;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public final class CaseInsensitiveString {

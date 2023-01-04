@@ -39,16 +39,17 @@ public class ColorPoint extends Point {
 class ColorPointTest {
     public static void main( String[] args ) {
 
-//        Point p = new Point(1, 2);
-//        ColorPoint cp = new ColorPoint(1, 2, Color.RED);
-//        System.out.println(p.equals(cp)); //true
-//        System.out.println(cp.equals(p)); //false
+        // 대칭성 위배
+        Point p = new Point(1, 2);
+        ColorPoint cp = new ColorPoint(1, 2, Color.RED);
+        System.out.println(p.equals(cp)); //true
+        System.out.println(cp.equals(p)); //false
 
 
+        // 추이성 위배
 //        ColorPoint a = new ColorPoint(1, 2, Color.RED);
 //        Point b = new Point(1, 2);
 //        ColorPoint c = new ColorPoint(1, 2, Color.BLUE);
-//
 //        System.out.println(a.equals(b)); //true
 //        System.out.println(b.equals(c)); //true
 //        System.out.println(a.equals(c)); //false
