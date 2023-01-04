@@ -4,7 +4,7 @@
 * 각 인스턴스가 본질적으로 고유하다. (Thread)
   * 값이 아닌 동작하는 개체를 표현하는 클래스
 * 인스턴스의 '논리적 동치성'을 검사할 일이 없다. (java.utils.regex.Pattern의 equals)
-  * 이 경우 정규식이 일치하는지 확인하는 것
+  * 이 경우 정규식이 일치하는지 확인하도록 수정가능하나, 필요없다면 기본 equals로 가능.
 * 상위 클래스에서 재정의한 equals가 하위 클래스에도 딱 들어맞는다. (Set, Map, List의 경우)
   * Abstract(Type)의 equals 사용
 * 클래스가 private 이거나 package-private이고 equals 메서드를 호출할 일이 없다.
