@@ -53,8 +53,8 @@ IT 전략본부에서 진행되는 '이펙티브 자바 3판' 발표 정보입�
 | 22.12.21 |     아이템 5      |   박상봉   |-
 | 22.12.21 |     아이템 6      |   배성진   |[Youtube](https://youtu.be/U39PgfWRSk0)
 | 22.12.28 |    아이템 7~8     |   김성열   |[아이템 7](https://youtu.be/qjSRqUd47Tc)  [아이템 8](https://youtu.be/EKXd-wGfqVE)
-|  23.1.4  |     아이템 9      |   윤은상   |
-|  23.1.4  |     아이템 10     |   김승현   |
+|  23.1.4  |     아이템 9      |   윤은상   |[Youtube](https://youtu.be/vg1Z6Yt5jZw)
+|  23.1.4  |     아이템 10     |   김승현   |[Youtube](https://youtu.be/eNHeX_xzE6c)
 | 23.1.11  |     아이템 11     |   서태한   |
 | 23.1.11  |     아이템 12     |   배성진   |
 | 23.1.18  |     아이템 13     |   윤은상   |
@@ -74,4 +74,6 @@ IT 전략본부에서 진행되는 '이펙티브 자바 3판' 발표 정보입�
 [아이템 5. 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라](documents/item05.md)    
 [아이템 6. 불필요한 객체 생성을 피하라](documents/item06.md)  
 [아이템 7. 다 쓴 객체 참조를 해제하라](documents/item07.md)    
-[아이템 8. finalizer와 cleaner 사용을 피하라](documents/item08.md)
+[아이템 8. finalizer와 cleaner 사용을 피하라](documents/item08.md)  
+[아이템 9. try-finally보다는 try-with-resources를 사용하라](documents/item09.md)  
+[아이템 10. equals는 일반 규약을 지켜 재정의하라](documents/item10.md)  
