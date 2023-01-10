@@ -24,6 +24,5 @@ public class PhoneNumber {
                 && pn.areaCode == areaCode;
     }
 
-    // hasecode를 같은 숫자로 리턴할 경우
 
 }

@@ -1,14 +1,19 @@
-package com.coopnc.effectivejava3rd.item11.exam01;
+package com.coopnc.effectivejava3rd.item11;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class exam01 {
+public class Exam01 {
     public static void main( String[] args ) {
         doTest();
     }
     
     public static void doTest() {
+
+        // 1. 같은 오브젝트로 map.get()
+        // 2. 같은 haseCode 다른 객체
+        // 3. haseCode 구현
+
         Map<PhoneNumber,String> m = new HashMap<>();
         
         PhoneNumber phoneNumber =  new PhoneNumber(707,867,5309);
@@ -17,11 +22,5 @@ public class exam01 {
 
         m.put(phoneNumber, "Jenny");
 
-        PhoneNumber phoneNumber2 = new PhoneNumber(707,867,5309);
-
-        System.out.println("hashCode: " + phoneNumber2.hashCode());
-
-
-        System.out.println(m.get(phoneNumber2));
     }
 }
