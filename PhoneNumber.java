@@ -1,4 +1,4 @@
-package com.coopnc.effectivejava3rd.item11.exam01;
+package com.coopnc.effectivejava3rd.item11;
 
 import java.util.Objects;
 
@@ -24,8 +24,6 @@ public class PhoneNumber {
                 && pn.areaCode == areaCode;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(lineNumber,prefix,areaCode);
-    }
+    // hasecode를 같은 숫자로 리턴할 경우
+
 }
