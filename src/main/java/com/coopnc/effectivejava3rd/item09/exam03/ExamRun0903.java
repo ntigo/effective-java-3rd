@@ -1,7 +1,5 @@
 package com.coopnc.effectivejava3rd.item09.exam03;
 
-import java.nio.file.Paths;
-
 /**
  * item 9 exam03
  *  - try-with-resources 예제
