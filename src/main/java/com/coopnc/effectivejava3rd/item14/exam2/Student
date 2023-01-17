@@ -1,0 +1,23 @@
+import java.util.Arrays;
+import java.util.Comparator;
+
+class Student implements Comparable<Student>{
+    String studentName; // 이름
+    int studentAge;      // 나이
+    double score;       // 점수
+
+    public Student(String studentName, int studentAge, double score) {
+        this.studentName = studentName;
+        this.studentAge = studentAge;
+        this.score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "이름: " + studentName + ", 나이: " + studentAge + ", 점수: " + score;
+    }
+    @Override
+    public int compareTo(Student o){
+        return Integer.compare(studentAge, o.studentAge);
+    }
+}
