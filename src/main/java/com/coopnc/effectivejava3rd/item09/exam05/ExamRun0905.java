@@ -29,7 +29,7 @@ public class ExamRun0905 {
 			autoCloseSocketClient.start();
 			Thread.sleep( 500 );
 		} catch( Exception e ) {
-			System.out.println( e.toString() );
+			System.out.println( e );
 		}
 	}
 }

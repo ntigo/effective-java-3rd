@@ -16,7 +16,7 @@ public class AutoCloseFileDataWriter extends BaseFileWriter implements AutoClose
 				System.out.println( "file close end" );
 			}
 		} catch ( IOException e ) {
-			System.out.println( e.toString() );
+			System.out.println( e );
 		}
 	}
 }

@@ -27,17 +27,16 @@ public class SocketServer {
 			}
 		} catch( Exception e ) {
 			System.out.println( "===== accept method error =====" );
-			System.out.println( e.toString() );
+			System.out.println( e );
 		}
 	}
 
 	public void start( Socket socket ) {
 		try {
-			socket.setSoLinger( true, 0 );
 			System.out.println( socket.getLocalAddress().toString() + " / " + socket.getLocalPort() + " server socket close" );
 			socket.close();
 		} catch( Exception e ) {
-			System.out.println( e.toString() );
+			System.out.println( e );
 		}
 	}
 
@@ -49,7 +48,7 @@ public class SocketServer {
 				serverSocket.close();
 			}
 		} catch( Exception e ) {
-			System.out.println( e.toString() );
+			System.out.println( e );
 		}
 	}
 }

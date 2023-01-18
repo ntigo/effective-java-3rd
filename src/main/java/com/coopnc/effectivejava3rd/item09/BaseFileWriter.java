@@ -25,7 +25,7 @@ public abstract class BaseFileWriter {
 
 	public String getTestFilePath() {
 		StringBuilder pathBuilder = new StringBuilder( 50 );
-		pathBuilder.append( Paths.get( "" ).toAbsolutePath().toString() )
+		pathBuilder.append( Paths.get( "" ).toAbsolutePath() )
 				.append( "\\test.txt" );
 
 		return pathBuilder.toString();

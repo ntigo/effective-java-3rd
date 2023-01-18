@@ -1,6 +1,5 @@
 package com.coopnc.effectivejava3rd.item08.exam04;
 
-import java.io.FileInputStream;
 import java.util.concurrent.CountDownLatch;
 
 public class Zombie extends ParentZombie {

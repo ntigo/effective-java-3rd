@@ -12,7 +12,6 @@ public class AutoCloseSocketClient implements AutoCloseable {
 	public void start() throws Exception {
 		SocketAddress address = new InetSocketAddress( "127.0.0.1", 52525 );
 		socket.connect( address );
-		socket.setSoLinger( true, 0 );
 
 		System.out.println( "socket connect : " + socket.getLocalAddress().toString() + " / " + socket.getLocalPort() );
 	}
@@ -26,7 +25,7 @@ public class AutoCloseSocketClient implements AutoCloseable {
 			}
 		} catch( IOException e ) {
 			System.out.println( "===== AutoCloseSocketClient close method error =====" );
-			System.out.println( e.toString() );
+			System.out.println( e );
 		}
 	}
 }
