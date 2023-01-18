@@ -1,0 +1,23 @@
+import java.util.HashSet;
+import java.util.TreeSet;
+
+public class BigDecimal {
+    public static void main(String[] args) {
+        final java.math.BigDecimal bigDecimal1 = new java.math.BigDecimal("1.0");
+        final java.math.BigDecimal bigDecimal2 = new java.math.BigDecimal("1.00");
+
+        final HashSet<java.math.BigDecimal> hashSet = new HashSet<>();
+        hashSet.add(bigDecimal1);
+        hashSet.add(bigDecimal2);
+
+        System.out.println(hashSet.size());
+
+        final TreeSet<java.math.BigDecimal> treeSet = new TreeSet<>();
+        treeSet.add(bigDecimal1);
+        treeSet.add(bigDecimal2);
+
+        System.out.println(treeSet.size());
+
+
+    }
+}
