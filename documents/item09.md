@@ -1,5 +1,4 @@
 # 아이템 9. try-finally보다는 try-with-resources를 사용하라.
-
 ----
 
 ## 1. try-with-resources란?
@@ -55,4 +54,3 @@ try {
 ## 6. AutoCloseable를 상속받은 자바 Api
 
 * https://docs.oracle.com/javase/8/docs/api/java/lang/AutoCloseable.html
-
