@@ -83,7 +83,7 @@ IT 전략본부에서 진행되는 '이펙티브 자바 3판' 발표 정보입�
 [아이템 7. 다 쓴 객체 참조를 해제하라](documents/item07.md)    
 [아이템 8. finalizer와 cleaner 사용을 피하라](documents/item08.md)  
 [아이템 9. try-finally보다는 try-with-resources를 사용하라](documents/item09.md)  
-[아이템 10. equals는 일반 규약을 지켜 재정의하라](documents/item10.md)
+[아이템 10. equals는 일반 규약을 지켜 재정의하라](documents/item10.md).  
 [아이템 11. equals는 재정의하려거든 hashCode도 재정의하라](documents/item11.md)  
 [아이템 12. toString을 항상 재정의하라](documents/item12.md)  
 [아이템 13. clone 재정의는 주의해서 진행하라](documents/item13.md)  
