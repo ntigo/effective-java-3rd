@@ -59,9 +59,9 @@ IT 전략본부에서 진행되는 '이펙티브 자바 3판' 발표 정보입�
 | 23.1.11  |     아이템 12     |   배성진   |[Youtube](https://youtu.be/ckjWWO2zgHA)
 | 23.1.18  |     아이템 13     |   윤은상   |[Youtube](https://youtu.be/U96VcpirHN8)
 | 23.1.18  |     아이템 14     |   유경호   |[Youtube](https://youtu.be/_XIxh2TmZzY)
-| 23.2.1   |     아이템 15     |   김성열   |
-| 23.2.1   |     아이템 16     |   박상봉   |
-| 23.2.1   |     아이템 17     |   서태한   |
+| 23.2.1   |     아이템 15     |   김성열   |[Youtube](https://youtu.be/WW4hYKmJ0Lk)
+| 23.2.1   |     아이템 16     |   박상봉   |[Youtube](https://youtu.be/bFH6Jfsxp9A)
+| 23.2.1   |     아이템 17     |   서태한   |[Youtube](https://youtu.be/jFnEWx9aFTU)
 | 23.2.8   |     아이템 18     |   윤은상   |
 | 23.2.8   |     아이템 19     |   염찬양   |
 | 23.2.8   |     아이템 20     |   배성진   |
@@ -89,3 +89,5 @@ IT 전략본부에서 진행되는 '이펙티브 자바 3판' 발표 정보입�
 [아이템 13. clone 재정의는 주의해서 진행하라](documents/item13.md)  
 [아이템 14. Comparable을 구현할지 고려하라](documents/item14.md)  
 [아이템 15. 클래스와 멤버의 접근 권한을 최소화하라](documents/item15.md)  
+[아이템 16. public 클래스에서는 public 필드가 아닌 접근자 메서드를 사용하라](documents/item16.md)  
+[아이템 17. 변경 가능성을 최소화하라](documents/item17.md)  
