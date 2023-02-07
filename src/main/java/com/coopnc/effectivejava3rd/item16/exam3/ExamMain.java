@@ -13,7 +13,7 @@ public class ExamMain {
 		aaa.y = 2;
 
 		Exam2 bbb = new Exam2( 1, 2 );
-		bbb.changeXY( 2, 1 );
+//		bbb.changeXY( 2, 1 );
 
 
 	}
