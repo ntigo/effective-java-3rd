@@ -62,9 +62,9 @@ IT 전략본부에서 진행되는 '이펙티브 자바 3판' 발표 정보입�
 | 23.2.1   |     아이템 15     |   김성열   |[Youtube](https://youtu.be/WW4hYKmJ0Lk)
 | 23.2.1   |     아이템 16     |   박상봉   |[Youtube](https://youtu.be/bFH6Jfsxp9A)
 | 23.2.1   |     아이템 17     |   서태한   |[Youtube](https://youtu.be/jFnEWx9aFTU)
-| 23.2.8   |     아이템 18     |   윤은상   |
-| 23.2.8   |     아이템 19     |   염찬양   |
-| 23.2.8   |     아이템 20     |   배성진   |
+| 23.2.8   |     아이템 18     |   윤은상   |[Youtube](https://youtu.be/E7dOO7CDXXg)
+| 23.2.8   |     아이템 19     |   염찬양   |[Youtube](https://youtu.be/7mJRtle56Y0)
+| 23.2.8   |     아이템 20     |   배성진   |[Youtube](https://youtu.be/1S_3f3RNC-Y)
 | 23.2.15  |     아이템 21     |   유경호   |
 | 23.2.15  |     아이템 22     |   박상봉   |
 | 23.2.22  |     아이템 23     |   김성열   |
@@ -91,3 +91,6 @@ IT 전략본부에서 진행되는 '이펙티브 자바 3판' 발표 정보입�
 [아이템 15. 클래스와 멤버의 접근 권한을 최소화하라](documents/item15.md)  
 [아이템 16. public 클래스에서는 public 필드가 아닌 접근자 메서드를 사용하라](documents/item16.md)  
 [아이템 17. 변경 가능성을 최소화하라](documents/item17.md)  
+[아이템 18. 상속보다는 컴포지션을 사용하라](documents/item18.md)  
+[아이템 19. 상속을 고려해 설계하고 문서화하라. 그러지 않았다면 상속을 금지하라](documents/item19.md)  
+[아이템 20. 추상 클래스보다는 인터페이스를 우선하라](documents/item20.md)  
