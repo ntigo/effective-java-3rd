@@ -1,9 +1,7 @@
 package com.coopnc.effectivejava3rd;
 
-import com.coopnc.effectivejava3rd.item19.AddInt;
-import com.coopnc.effectivejava3rd.item19.BoongABbangMachine;
-import com.coopnc.effectivejava3rd.item19.CreamBoongABbangMachine;
-import com.coopnc.effectivejava3rd.item19.Sub;
+import com.coopnc.effectivejava3rd.item10.item19.BoongABbangMachine;
+import com.coopnc.effectivejava3rd.item10.item19.CreamBoongABbangMachine;
 
 public class Main {
     public static void main( String[] args ) {
