@@ -81,6 +81,7 @@ public class OutsideClassExample {
       outsideClass = null;
       nonStaticClass.print();
    }
+
    /**
     * 정적 클래스는 바깥 인스턴스 생성 없이 생성 가능
     */
