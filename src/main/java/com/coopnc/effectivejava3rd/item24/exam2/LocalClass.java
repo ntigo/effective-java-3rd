@@ -13,19 +13,25 @@ public class LocalClass {
     //public static void test() {
     // 비 정적 문매애ㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㄱ
     public void test() {
+        LocalClass localClass = new LocalClass();
+
         class RealLocalClass {
-            //private static String oWong = "오옹?";
+            private String oWong = "오옹?";
 
             public String getRodong() {
                 return "그건 너의 노동";
             }
 
+//            public String useLocalPrivateValue() {
+//                return "널 사용하고 싶은데? " + localPrivateValue;
+//            }
+
             public String useLocalPrivateValue() {
-                return "널 사용하고 싶은데? " + localPrivateValue;
+                return "널 사용하고 싶은데? " + LocalClass.this.localPrivateValue;
             }
 
             public String useLocalPulbicValue() {
-                return "너는 당연히 사용할 수 있겠지? " + localPublicValue;
+                return "너는 당연히 사용할 수 있겠지? " + localClass.localPublicValue;
             }
 
             public String useLocalStaticValue() {
@@ -37,5 +43,6 @@ public class LocalClass {
         System.out.println(realLocalClass.getRodong());
         System.out.println(realLocalClass.useLocalPrivateValue());
         System.out.println(realLocalClass.useLocalPulbicValue());
+        System.out.println(realLocalClass.useLocalStaticValue());
     }
 }

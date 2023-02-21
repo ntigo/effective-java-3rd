@@ -6,6 +6,10 @@ public class AnonymousClass {
     // 응 private 이면 안되, public / protected 은 되
     protected String holy = "yo holy";
 
+    public AnonymousClass() {
+        System.out.println( "생성자가 실행되었습니까?" );
+    }
+
     public void print() {
         System.out.println( "original class~" );
     }
@@ -14,7 +18,7 @@ public class AnonymousClass {
         AnonymousClass anonymousClass = new AnonymousClass() {
             @Override
             public void print() {
-                System.out.println( "no name class ~ " + name );
+                System.out.println( "no name class ~ " + AnonymousClass.this.name );
             }
         };
         anonymousClass.print();
@@ -31,15 +35,19 @@ public class AnonymousClass {
 //        }
         // 익명 클랫쓰
         AnonymousClass anonymousClass = new AnonymousClass() {
+            private static final String data = "123";
+
             @Override
             public void print() {
                 // 응 안되
+                //System.out.println( "no name class ~ " + AnonymousClass.this.name );
                 //System.out.println( "no name class ~ " + name );
                 // 응 되
-                //System.out.println( "no name class ~ " + holy );
+                System.out.println( "no name class ~ " + holy + ", data : " + data );
             }
-
         };
         anonymousClass.print();
     }
 }
+
+
