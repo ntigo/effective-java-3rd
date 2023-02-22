@@ -1,22 +1,17 @@
 package com.coopnc.effectivejava3rd;
 
-import com.coopnc.effectivejava3rd.item10.item19.BoongABbangMachine;
-import com.coopnc.effectivejava3rd.item10.item19.CreamBoongABbangMachine;
+import com.coopnc.effectivejava3rd.item24.exam1.OutsideClass;
+import com.coopnc.effectivejava3rd.item24.exam2.AnonymousClass;
+import com.coopnc.effectivejava3rd.item24.exam2.LocalClass;
+import com.coopnc.effectivejava3rd.item24.exam3.WhatTheLambda;
 
 public class Main {
     public static void main( String[] args ) {
-        // 훅(Hook) 예제
-        BoongABbangMachine boongABbangMachine = new BoongABbangMachine();
-        boongABbangMachine.make(1);
-        boongABbangMachine = new CreamBoongABbangMachine();
-        boongABbangMachine.make(1);
+        OutsideClass outsideClass = new OutsideClass();
+        OutsideClass.NonStaticClass nonStaticClass = outsideClass.new NonStaticClass();
+        nonStaticClass.print();
 
-        // 생성자 오동작 예제
-//  	  Sub sub = new Sub();
-//  	  sub.overrideMe();
-
-        // private 도우미 메서드 예제
-//        AddInt addInt = new AddInt();
-//        System.out.println( "1~10까지 합(55) : " + addInt.addAll( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ) );
+//        OutsideClass.StaticClass staticClass = new OutsideClass.StaticClass();
+//        staticClass.print();
     }
 }
