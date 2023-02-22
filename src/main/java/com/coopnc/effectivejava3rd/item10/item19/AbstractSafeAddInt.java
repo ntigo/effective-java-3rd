@@ -1,4 +1,4 @@
-package com.coopnc.effectivejava3rd.item19;
+package com.coopnc.effectivejava3rd.item10.item19;
 
 /**
  * 정수의 합산 기능을 제공한다.
