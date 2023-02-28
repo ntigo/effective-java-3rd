@@ -1,5 +1,7 @@
 package com.coopnc.effectivejava3rd.item25.exam1;
 
+class A {
+}
 //class Utensil {
 //    static final String NAME = "pan";
 //}
