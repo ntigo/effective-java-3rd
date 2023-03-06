@@ -1,6 +1,6 @@
 package com.coopnc.effectivejava3rd.item26;
 
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
@@ -17,7 +17,7 @@ public class Practice {
     //private final Collection<Stamp> stamps = new ArrayList<>();
 
     // 반복자 로 타입 - 따라하지 말것
-    @Test
+//    @Test
     void test0(){
         stamps.add(Coin.COIN_10);
         //stamps.add(Stamp.STAMP_A);
@@ -29,7 +29,7 @@ public class Practice {
 
 
     // unSafeAdd가 로 타입 사용 - 런타임 실패
-    @Test
+//    @Test
     void test1(){
         List<String> strings = new ArrayList<>();
         unSafeAdd(strings, Integer.valueOf(42));
@@ -41,12 +41,12 @@ public class Practice {
         list.add(o);
     }
 
-    @Test
+//    @Test
     public void test2(){
         Set<Integer> set = new HashSet<>();
         set.add(1);
-        int num = numElementsInCommon(set, Set.of(2));
-        System.out.println("num = " + num);
+//        int num = numElementsInCommon(set, Set.of(2));
+//        System.out.println("num = " + num);
     }
 
     // 잘못된 예 - 모르는 타입의 원소도 받는 로 타입을 사용했다.
@@ -64,14 +64,14 @@ public class Practice {
     }
 
     // Collection<?>에는 (null 외에는) 어떤 원소도 넣을 수 없다.
-    @Test
+//    @Test
     void test3(){
         Collection<?> collection = new ArrayList<>();
         //collection.add("abc");
     }
 
     // 로 타입을 써도 좋은 예 - instanceof 연산자
-    @Test
+//    @Test
     void test4(){
         Set<?> o = new HashSet<>();
         if(o instanceof Set){ // 로 타입
