@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-// TODO : 배열을 리스트로 변환하는 코딩 연습하기. 시연 예정
 /**
  * <pre>
  * 컬렉션 안의 원소 중 하나를 무작위로 선택해 반환하는

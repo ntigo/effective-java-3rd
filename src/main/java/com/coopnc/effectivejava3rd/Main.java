@@ -1,7 +1,5 @@
 package com.coopnc.effectivejava3rd;
 
-import com.coopnc.effectivejava3rd.item28.GenericArray;
-
 import java.util.Arrays;
 import java.util.List;
 
