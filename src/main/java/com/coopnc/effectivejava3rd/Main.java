@@ -1,30 +1,17 @@
 package com.coopnc.effectivejava3rd;
 
-import java.util.ArrayList;
+import com.coopnc.effectivejava3rd.item28.GenericArray;
+
 import java.util.Arrays;
 import java.util.List;
 
 public class Main {
-
-    public static List<?> wildCardTest( List<?> list ) {
-        return list;
-    }
-
-    public static List<String> genenric( List<String> list ) {
-        return list;
-    }
-
     public static void main( String[] args ) {
         // 실체화, 소거
         // \Java\Workspace\effective-java-3rd\src\main\java\com\coopnc\effectivejava3rd
         // javac Main.java -encoding UTF-8
         String[] stringArray = new String[] { "실체화 타입" };
         List<String> stringList = Arrays.asList( "실체화 불가 타입" );
-        List<String> sl = new ArrayList<>();
-        sl.add( "wild card" );
-        List<?> wildCardList = wildCardTest( sl );
-        System.out.println(wildCardList);
-        List<?>[] oh = new List<?>[1];
 
         // 공변
 //        Object[] objectArray = new Long[1];
@@ -50,7 +37,7 @@ public class Main {
 //        objects[0] = intList;
 //        String s = stringLists[0].get(0);
 
-//        // 제네릭 배열 생성
+        // 제네릭 배열 생성
 //        GenericArray<List<String>> stringListsWrapper = new GenericArray<>(1);
 //        List<Integer> intList = Arrays.asList(42);
 //        // 배열의 공변성으로 할당 성공

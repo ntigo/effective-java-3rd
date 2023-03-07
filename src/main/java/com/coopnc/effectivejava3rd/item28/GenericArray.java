@@ -13,7 +13,7 @@ public class GenericArray<E> {
     // 형변환 경고 제거
     @SuppressWarnings("unchecked")
     public GenericArray(int size) {
-        // 배열의 공변성을 통해 제네릭 배열로 형변환
+        // 명시적 형변환을 통해 제네릭 배열로 형변환
         genericArray = (E[]) new Object[size];
     }
 
