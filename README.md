@@ -71,8 +71,8 @@ IT 전략본부에서 진행되는 '이펙티브 자바 3판' 발표 정보입�
 | 23.2.21  |     아이템 24     |   윤은상   |[Youtube](https://youtu.be/-t-fvP5SQ0Y)
 | 23.2.28  |     아이템 25     |   서태한   |[Youtube](https://youtu.be/u4HX2kamj-0)
 | 23.2.28  |     아이템 26     |   배성진   |[Youtube](https://youtu.be/z59uQXkiBek)
-|  23.3.8  |     아이템 27     |   유경호   |
-|  23.3.8  |     아이템 28     |   염찬양   |
+|  23.3.8  |     아이템 27     |   유경호   |[Youtube](https://youtu.be/SNuhEYLODrw)
+|  23.3.8  |     아이템 28     |   염찬양   |[Youtube](https://youtu.be/JpiKaISiYXU)
 | 23.3.15  |     아이템 29     |   박상봉   |
 | 23.3.15  |     아이템 30     |   김성열   |
 | 23.3.22  |     아이템 31     |   서태한   |
@@ -112,3 +112,5 @@ IT 전략본부에서 진행되는 '이펙티브 자바 3판' 발표 정보입�
 [아이템 24. 멤버 클래스는 되도록 static으로 만들라](documents/item24.md)  
 [아이템 25. 톱레벨 클래스는 한 파일에 하나만 담으라](documents/item25.md)  
 [아이템 26. 로 타입은 사용하지 말라](documents/item26.md)  
+[아이템 27. 비검사 경고를 제거하라](documents/item27.md)  
+[아이템 28. 배열보다는 리스트를 사용하라](documents/item28.md)  
