@@ -40,10 +40,10 @@ public class Main {
 //            System.out.println(u2.apply(i));
 //        }
 
-        List<String> list1 = Arrays.asList("1", "2");
-        System.out.println(Recursive.max(list1));
-
-        List<ComparableClass> list2 = Arrays.asList(new ComparableClass(1), new ComparableClass(2));
-        System.out.println(Recursive.max(list2));
+//        List<String> list1 = Arrays.asList("1", "2");
+//        System.out.println(Recursive.max(list1));
+//
+//        List<ComparableClass> list2 = Arrays.asList(new ComparableClass(1), new ComparableClass(2));
+//        System.out.println(Recursive.max(list2));
     }
 }
