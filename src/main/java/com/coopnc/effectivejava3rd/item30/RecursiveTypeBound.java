@@ -2,7 +2,7 @@ package com.coopnc.effectivejava3rd.item30;
 
 import java.util.Collection;
 
-public class Recursive {
+public class RecursiveTypeBound {
     public static <E extends Comparable<E>> E max (Collection<E> c) {
         if (c.isEmpty())
             throw new IllegalArgumentException();

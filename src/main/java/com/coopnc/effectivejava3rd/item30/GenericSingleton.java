@@ -2,10 +2,13 @@ package com.coopnc.effectivejava3rd.item30;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Map;
 
-public class Sample {
+public class GenericSingleton {
     @SuppressWarnings("unchecked")
     public static <T> Printable<T> printer() {
+//        Comparator<String> c = Collections.reverseOrder();
+//        Map<String, String> map = Collections.emptyMap();
         return (Printable<T>) Printer.PRINTER;
     }
 

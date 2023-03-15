@@ -29,21 +29,21 @@ public class Main {
 //        Sample.<String>printer().print("");
 
 //        String[] stringArr = {"A", "B", "C"};
-//        UnaryOperator<String> u1 = Identity.identityFunction();
+//        UnaryOperator<String> u1 = IdentityFunction.identityFunction();
 //        for (String s : stringArr) {
 //            System.out.println(u1.apply(s));
 //        }
 //
 //        int[] intArr = {1,2,3,4};
-//        UnaryOperator<Integer> u2 = Identity.identityFunction();
+//        UnaryOperator<Integer> u2 = IdentityFunction.identityFunction();
 //        for (int i : intArr) {
 //            System.out.println(u2.apply(i));
 //        }
 
 //        List<String> list1 = Arrays.asList("1", "2");
-//        System.out.println(Recursive.max(list1));
+//        System.out.println(RecursiveTypeBound.max(list1));
 //
 //        List<ComparableClass> list2 = Arrays.asList(new ComparableClass(1), new ComparableClass(2));
-//        System.out.println(Recursive.max(list2));
+//        System.out.println(RecursiveTypeBound.max(list2));
     }
 }
