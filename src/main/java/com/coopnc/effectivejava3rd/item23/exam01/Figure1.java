@@ -4,14 +4,15 @@ public class Figure1 {
     enum Shape {
         RECTANGLE,
         CIRCLE, // todo 추가
+        TRIANGLE
     }
 
     // 모양을 나타냄
     private final Shape shape;
 
     // 모양이 사각형일 때만 쓰인다.
-    private double length; // todo 추가
-    private double width; // todo 추가
+    private final double length; // todo 추가
+    private final double width; // todo 추가
 
     // 모양이 원일 때만 쓰인다.
     private double radius;
@@ -21,12 +22,15 @@ public class Figure1 {
         this.shape = Shape.RECTANGLE;
         this.length = length;
         this.width = width;
+        this.radius = 0;
     }
 
     // 원용 생성자
     public Figure1(double radius) {  // todo 추가
         this.shape = Shape.CIRCLE;
-        this.radius = radius;
+//        this.radius = radius;
+        this.length = 0;
+        this.width = 0;
     }
 
     public double area() {
