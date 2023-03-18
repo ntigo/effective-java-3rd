@@ -1,4 +1,4 @@
-package com.coopnc.effectivejava3rd.item10.item19;
+package com.coopnc.effectivejava3rd.item19;
 
 // 훅(Hook)을 설명하기 위해 만든 클래스
 /**

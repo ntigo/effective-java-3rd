@@ -1,4 +1,4 @@
-package com.coopnc.effectivejava3rd.item10.item19;
+package com.coopnc.effectivejava3rd.item19;
 
 // @implSpec 태그 설명을 위해 생성한 클래스
 // Locale : ko_KR

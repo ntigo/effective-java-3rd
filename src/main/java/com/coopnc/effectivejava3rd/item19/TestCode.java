@@ -1,4 +1,4 @@
-package com.coopnc.effectivejava3rd.item10.item19;
+package com.coopnc.effectivejava3rd.item19;
 
 public class TestCode {
     public static void main(String[] args) {
