@@ -1,4 +1,4 @@
-package com.coopnc.effectivejava3rd.item10.item19;
+package com.coopnc.effectivejava3rd.item19;
 
 /**
  * 크림 붕어빵을 만드는 기계
