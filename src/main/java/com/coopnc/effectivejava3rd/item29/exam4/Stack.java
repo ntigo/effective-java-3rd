@@ -1,0 +1,41 @@
+package com.coopnc.effectivejava3rd.item29.exam4;
+
+import java.util.Arrays;
+import java.util.EmptyStackException;
+
+public class Stack<E> {
+
+    private E[] elements;
+    private int size = 0;
+    private static final int DEFAULT_INITiNAL_CAPACITY = 16;
+
+    public Stack() {
+    }
+
+    public  void push(E e) {
+        ensureCapacity();
+        elements[size++] = e;
+    }
+
+    public E Pop() {
+        if (size == 0) {
+            throw  new EmptyStackException();
+        }
+
+        @SuppressWarnings("unchecked")
+        E result = (E) elements[--size];
+
+        elements[size] = null; // 다 쓴 참조 해제
+        return result;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    private void ensureCapacity() {
+        if (elements.length == 0) {
+            elements = Arrays.copyOf(elements, 2 * size + 1);
+        }
+    }
+}
