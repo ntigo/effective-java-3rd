@@ -6,13 +6,6 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Practice {
     public static void main(String[] args) {
-//        double sum = 0;
-//        for(int cnt = 0 ; cnt < 100 ; cnt++) {
-//            sum += 0.1;
-//        }
-//        System.out.println(sum);
-
-
         ///dangerous(List.of("abc")); // ClassCastException
         //String[] attributes = pickTwo("good", "fast", "cheap"); // ClassCastException
 
