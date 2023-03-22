@@ -34,7 +34,7 @@ PECS: Producer-Extends, Consumer-Super의 줄임말이다.
 반환 타입은 여전히 Set<E>임을 주목해야합니다. 반환타입에 한정적 타입을 사용을 하면 안됩니다.
 유연성을 높여기보다 클라이언트 코드에서도 와일드카드를 써야되기 때문입니다.
 
-### Comparator와 Comparble은 소비자 
+### Comparator와 Comparable은 소비자 
 
 Comparable은 안에 있는 값을 꺼내어 비교하기 때문에 언제나 소비자이므로, 일반적으로 Comparable<E>보다는 Comparable<? super E>를 사용하는 편이 낫다.
 Comparator도 마찬가지다.  
