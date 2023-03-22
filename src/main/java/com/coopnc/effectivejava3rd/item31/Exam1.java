@@ -13,6 +13,6 @@ public class Exam1 {
     public static void main(String[] arg) {
         Set<Integer> integers1 = Set.of(1,3,5);
         Set<Double> doubleSet = Set.of(1.0,2.0);
-        Set<Number> numbers = Exam1.union(integers1,doubleSet);
+       // Set<Number> numbers = Exam1.union(integers1,doubleSet);
     }
 }
