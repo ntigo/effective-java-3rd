@@ -25,7 +25,7 @@ class Exam2 {
     public static void main(String[] arg) {
         List<ScheduledFuture<?>> scheduledFutures = new ArrayList<>();
 
-        max(scheduledFutures);
+        //max(scheduledFutures);
     }
 
 }
